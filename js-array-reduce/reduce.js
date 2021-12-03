@@ -7,7 +7,10 @@ Examples:
 */
 
 function extractValue(arr, key) {
-
+    arr.reduce(function(acc, next) {
+        return next[key];
+        return acc;
+    });
 }
 
 /*
