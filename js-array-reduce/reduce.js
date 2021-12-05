@@ -1,5 +1,6 @@
 /*
-Write a function called extractValue which accepts an array of objects and a key and returns a new array with the value of each object at the key.
+Write a function called extractValue which accepts an array of objects and a key and returns a new array with the value of each object 
+at the key.
 
 Examples:
     const arr = [{name: 'Elie'}, {name: 'Tim'}, {name: 'Matt'}, {name: 'Colt'}]
@@ -7,15 +8,20 @@ Examples:
 */
 
 function extractValue(arr, key) {
-    arr.reduce(function(acc, next) {
-        return next[key];
-        return acc;
+    // arr.reduce(function(acc, next) {
+    //     return acc.push(next[key]);
+    //     return acc;
+    // });
+    let result = [];
+    arr.forEach(function(obj) {
+        result.push(obj[key]);
     });
+    return result;
 }
 
 /*
 Write a function called vowelCount which accepts a string and returns an object with the keys as the vowel and the values as the number of times the vowel appears in the string. This function should be case insensitive so a lowercase letter and uppercase letter should count
-
+ 
 Examples:
     vowelCount('Elie') // {e:2,i:1};
     vowelCount('Tim') // {i:1};
