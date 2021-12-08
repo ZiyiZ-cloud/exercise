@@ -62,12 +62,10 @@ function findSpotForCol(x) {
     for (let y = (HEIGHT - 1); y >= 0; y--) {
         if (!board[y][x]) {
             return y;
-        } else {
-            return null;
         }
     }
+    return null;
     //return 0;
-
 }
 
 /** placeInTable: update DOM to place piece into HTML table of board */
@@ -120,9 +118,9 @@ function handleClick(evt) {
 
     // check for tie
     // TODO: check if all cells in board are filled; if so call, call endGame
-    // if () {
-    //     return endGame('There is a tie.')
-    // };
+    if (board.every(row => row.every(cell => cell))) {
+        return endGame('There is a tie.')
+    };
 
     // switch players
     // TODO: switch currPlayer 1 <-> 2
