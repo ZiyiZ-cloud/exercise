@@ -27,7 +27,13 @@ const doubleAndReturnArgs = (arr, ...args) => [...arr, ...args.map(v => v * 2)];
 and return a new array without that item. */
 
 function removeRandom(items) {
-    return
+    const max = items.length - 1;
+    const random = getRandomInt(0, max);
+    items.slice(random);
+}
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
 }
 
 /** Return a new array with every item in array1 and array2. */

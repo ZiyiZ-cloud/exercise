@@ -27,24 +27,19 @@ vowelCount('awesome') // Map { 'a' => 1, 'e' => 2, 'o' => 1 }
 vowelCount('Colt') // Map { 'o' => 1 }
 
 function countVowel(str) {
-    const newArr = [];
+    const newMap = new Map();
     const arr = Array.from(str);
     const vowel = 'aeiou';
 
     arr.forEach(function(val) {
         const newVal = val.toLowerCase();
         if (vowel.indexOf(newVal) !== -1) {
-            if (newArr[newVal]) {
-                newArr[newVal]++;
+            if (newMap[newVal]) {
+                newMap[newVal]++;
             } else {
-                newArr[newVal] = 1;
+                newMap[newVal] = 1;
             }
         }
     })
-
-    const countMap = new Map(newArr);
-    countMap.forEach((val, key) => {
-        return (key + '=>' + val);
-    });
-
+    return newMap;
 }
