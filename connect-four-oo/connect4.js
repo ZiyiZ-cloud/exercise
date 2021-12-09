@@ -7,11 +7,12 @@
 
 
 class Game {
-    constructor(height, width, p1, p2) {
+    constructor(p1, p2, height = 6, width = 7) {
         this.height = height;
         this.width = width;
         this.players = [p1, p2];
-        this.board = [];
+        this.makeBoard();
+        this.makeHtmlBoard();
         this.currPlayer = p1;
     }
 
@@ -39,7 +40,7 @@ class Game {
         // make column tops (clickable area for adding a piece to that column)
         const top = document.createElement('tr');
         top.setAttribute('id', 'column-top');
-        top.addEventListener('click', handleClick);
+        top.addEventListener('click', this.handleClick.bind(this));
 
         for (let x = 0; x < this.width; x++) {
             const headCell = document.createElement('td');
@@ -99,7 +100,7 @@ class Game {
         const x = +evt.target.id;
 
         // get next spot in column (if none, ignore click)
-        const y = findSpotForCol(x);
+        const y = this.findSpotForCol(x);
         if (y === null) {
             return;
         }
@@ -119,7 +120,7 @@ class Game {
         }
 
         // switch players
-        this.currPlayer = this.currPlayer === 1 ? 2 : 1;
+        this.currPlayer = this.currPlayer === this.players[0] ? this.palyers[1] : this.players[0];
     }
 
     /** checkForWin: check board cell-by-cell for "does a win start here?" */
@@ -136,7 +137,7 @@ class Game {
                 y < this.height &&
                 x >= 0 &&
                 x < this.width &&
-                board[y][x] === this.currPlayer
+                this, board[y][x] === this, currPlayer
             );
         }
 
@@ -182,6 +183,3 @@ class Game {
 
 
 }
-
-
-new Game(6, 7);
