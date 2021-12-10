@@ -7,13 +7,13 @@
 
 
 class Game {
-    constructor(p1, p2, height = 6, width = 7) {
+    constructor(height, width) {
         this.height = height;
         this.width = width;
-        this.players = [p1, p2];
+        this.players = ['p1', 'p2'];
         this.makeBoard();
         this.makeHtmlBoard();
-        this.currPlayer = p1;
+        this.currPlayer = 'p1';
     }
 
     // const WIDTH = 7;
@@ -137,7 +137,7 @@ class Game {
                 y < this.height &&
                 x >= 0 &&
                 x < this.width &&
-                this, board[y][x] === this, currPlayer
+                this, board[y][x] === this.currPlayer
             );
         }
 

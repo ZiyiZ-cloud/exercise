@@ -7,7 +7,6 @@
 
 
 
-
 const WIDTH = 7;
 const HEIGHT = 6;
 
@@ -80,19 +79,14 @@ function placeInTable(y, x) {
     //const r = d.getElementsByTagName('td')[x];
     const tdId = document.getElementById(`${y}-${x}`);
 
-    newDiv.classList.add('piece');
-    if (currPlayer === 1) {
-        newDiv.classList.add('p1');
-    } else {
-        newDiv.classList.add('p2');
-    }
+    newDiv.classList.add(`piece p${currPlayer}`);
     tdId.appendChild(newDiv);
 
 }
 
 /** endGame: announce game end */
 
-function endGame(msg) {
+function showMessage(msg) {
     // TODO: pop up alert message
     window.alert(msg);
 }
@@ -121,7 +115,7 @@ function handleClick(evt) {
 
     // check for tie
     // TODO: check if all cells in board are filled; if so call, call endGame
-    if (board.every(row => row.every(cell => cell))) {
+    if (board[0].every(cell => cell)) {
         return endGame('There is a tie.')
     };
 
