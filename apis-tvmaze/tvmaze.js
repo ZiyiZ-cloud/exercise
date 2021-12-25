@@ -39,6 +39,8 @@ async function searchShows(query) {
 }
 
 
+showinformation = [];
+
 
 /** Populate shows list:
  *     - given list of shows, add shows to DOM
@@ -46,6 +48,7 @@ async function searchShows(query) {
 
 function populateShows(shows) {
     const $showsList = $("#shows-list");
+    //what does this line do
     $showsList.empty();
 
     for (let show of shows) {
